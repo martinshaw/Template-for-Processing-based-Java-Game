@@ -22,14 +22,15 @@ public class Game extends PApplet {
     }
 
     public void setup(){
-    	this.currentScreen = new SplashScreen(this);
+    	background(0);
+    	changeScreen(new SplashScreen(this, this));
     }
 
-	public void draw(){
-		surface.setTitle((String) settings.get("GAME_TITLE"));
-		
+	public void draw(){		
 		currentScreen.move();
     	currentScreen.draw();
+
+		surface.setTitle((String) settings.get("GAME_TITLE"));
     }
     
 	public void changeScreen(BaseScreen _screen){
