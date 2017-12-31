@@ -5,7 +5,7 @@ import processing.core.*;
 
 public class SplashScreen extends BaseScreen {
 	
-	PApplet parent = null;
+	PApplet p = null;
 	Game game = null;
 	
 	int backgroundShade = 50;
@@ -13,10 +13,10 @@ public class SplashScreen extends BaseScreen {
 	int logo_width = 350, logo_height = 350;
 	
 	public SplashScreen(PApplet _parent, Game _game) {
-		this.parent = _parent;
+		this.p = _parent;
 		this.game = _game;
 		
-		logo_image = this.parent.loadImage("logo.png");
+		logo_image = p.loadImage("logo.png");
 		
 	}
 
@@ -27,18 +27,18 @@ public class SplashScreen extends BaseScreen {
 
 	@Override
 	public void draw() {
-		if (backgroundShade <= 255)	this.parent.background(backgroundShade);	
+		if (backgroundShade <= 255)	p.background(backgroundShade);	
 		
-		this.parent.image(
+		p.image(
 			this.logo_image, 
-			this.parent.width /2 - (logo_width/2),
-			this.parent.height /2 - (logo_height/2) -50,
+			p.width /2 - (logo_width/2),
+			p.height /2 - (logo_height/2) -50,
 			this.logo_width,
 			this.logo_height
 		);
 		
-		if ((this.parent.frameCount / Math.round(this.parent.frameRate)) >= 4) { // approximately after 4 seconds
-			this.game.changeScreen(new Level1Screen(this.parent, this.game));
+		if ((p.frameCount / Math.round(p.frameRate)) >= 4) { // approximately after 4 seconds
+			this.game.changeScreen(new Level1Screen(p, this.game));
 		}
 		 
 	}
